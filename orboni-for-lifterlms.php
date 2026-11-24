@@ -4,7 +4,7 @@
  * Plugin Name:       Orboni for LifterLMS
  * Plugin URI:        https://orboni.com/docs/lifterlms
  * Description:       Sell courses and memberships for crypto — USDT, USDC, BTC, ETH and more — paid straight to your own wallets. A payment gateway for LifterLMS's checkout; Orboni never holds your money.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Requires Plugins:  lifterlms
@@ -16,7 +16,7 @@
  */
 defined('ABSPATH') || exit;
 
-define('ORBONI_LLMS_VERSION', '1.0.0');
+define('ORBONI_LLMS_VERSION', '1.0.1');
 define('ORBONI_LLMS_FILE', __FILE__);
 define('ORBONI_LLMS_DIR', plugin_dir_path(__FILE__));
 define('ORBONI_LLMS_URL', plugin_dir_url(__FILE__));
@@ -57,10 +57,11 @@ add_action('plugins_loaded', static function () {
     }
 }, 20);
 
-/** Shown to whoever can activate plugins, while LifterLMS is missing or older than 7.0. */
+/** Shown on the Plugins screen only, to whoever can activate plugins, while LifterLMS is missing or older than 7.0. */
 function orboni_llms_missing_notice()
 {
-    if (! current_user_can('activate_plugins')) {
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+    if (! $screen || $screen->id !== 'plugins' || ! current_user_can('activate_plugins')) {
         return;
     }
 

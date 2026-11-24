@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: lifterlms
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,9 @@ Every request carries your Orboni secret key. Orboni's [Terms of Service](https:
 4. An order paid with crypto, with its transaction and notes.
 
 == Changelog ==
+
+= 1.0.1 =
+* The notice that a newer LifterLMS is needed shows on the Plugins screen only.
 
 = 1.0.0 =
 * First release: LifterLMS's own checkout for one-time access plans, prices in 37 currencies, read-backs without a webhook, paying a pending order again from the course's checkout.
